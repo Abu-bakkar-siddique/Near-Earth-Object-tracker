@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form class = "Register" action="/register", method="post">
+        <div class="mb-3">
+            <h4 style=" font: normal; color: black; "> Sign up</h4>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email" placeholder="email" type="text">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+
+        <div class = "mb-3">
+        <button class="btn btn-dark" type="submit">Register</button>
+        </div>
+
+        {% if error %}
+        <div class="mb-3 alert role=alert">
+            <p class = "text-danger" >{{error}} </p>
+        </div>
+        {% endif %}
+        
+    </form>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    NASA NEO
+{% endblock %}
+
+{% block main %}
+     
+    <form action="/" method="post">
+      <div class="mb-3">
+          <h4 style="font: normal; color:black;">Search for Near Earth Objects</h4>
+      </div>
+  
+      <div class="container text-center">
+  
+          <div class="row">
+  
+              <div class="col">
+                  <input autocomplete="off" class="form-control mx-auto w-auto" type="text" id="start_date" name="start_date" placeholder="start date yy/mm/dd">
+              </div>
+  
+              <div class="col">
+                  <input autocomplete="off" class="form-control mx-auto w-auto" type="text" id="end_date" name="end_date" placeholder="end date yy/mm/dd">
+              </div>
+  
+              <div class="col">
+                  <button class="btn btn-dark btn-block" type="submit">search</button>
+              </div>
+  
+          </div>
+  
+      </div>
+      {% if error %}
+      <div class="mb-3 alert role=alert">
+          <p class = "text-danger" >{{error}} </p>
+      </div>
+      {% endif %}
+      
+  </form>
+  <div>  
+
+<table class = "container">
+    <p>________________________________________________________________________________________________________________________________________________________________________________</p>
+    <tr>
+      <th>Name</th>
+      <th>Diameter(kilometers)</th>
+      <th>Close Approach date</th>
+      <th>Relative Vilocity (kps)</th>
+      <th>Miss Distance(kilometers)</th>
+    </tr>
+    {% for astroid in data %}
+    {% set name = astroid.name %}
+
+    <tr>
+      <td>{{name}}</td>
+      <td>{{astroid.estimated_diameter_kms}}</td>
+      <td>{{astroid.close_approach_date_full}}</d>
+      <td>{{astroid.relative_velocity_kps}}</td>
+      <td>{{astroid.miss_distance_kilometer}}</td>
+    </tr>
+{% endfor %}
+  </table>
+  
+</div>
+{% endblock %}

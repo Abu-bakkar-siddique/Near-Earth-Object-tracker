@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <form class= "--Login" action="/login" method="post">
+        <div class = "mb-3">
+            <h4 style = "font: normal; color:black;"> Log In</h4>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" 
+            id="email" name="email" placeholder="email" type="text">
+        </div>
+
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="password" name="password" 
+            placeholder="Password" type="password">
+        </div>
+
+        <button class="btn btn-dark btn-block" type="submit">Log In</button>
+        </div>
+    
+        {% if error %}
+        <div class="mb-3 alert role=alert">
+            <p class = "text-danger" >{{error}} </p>
+        </div>
+        {% endif %}
+        
+    </form>
+{% endblock %}

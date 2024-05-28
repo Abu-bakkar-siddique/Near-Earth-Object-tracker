@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+    
+
+
+    
+    <title>{% block title %}  {% endblock %}</title>
+</head>
+
+
+<body>
+    <nav class="bg-light border navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><span style="color:rgba(20, 5, 48, 0.92) ;"> Beyond </span> <span style = "color: rgba(81, 147, 201, 0.692);">Horizons</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" 
+                    class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" 
+                    type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto mt-2">
+                {% if session["user_id"] %}
+                <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+                {% else %}
+                    <!--Login and register navbar with /login if not registered /register -->
+                        <li class="nav-item"><a class="nav-link link-offset-2 link-offset-3-hover 
+                            link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+                            href="register">sign up</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link link-offset-2 link-offset-3-hover
+                            link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                            href="/login">log In</a></li>
+                {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class=" container-fluid">
+        {% block image %} {% endblock %}
+    </div>
+    
+    <main class="container-fluid py-5 text-center">
+        {% block main %}    {% endblock %}
+    </main>
+
+    <footer class="mb-5 small text-center text-muted">
+        
+        Data provided by <a href="https://api.nasa.gov/">NASA</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+            crossorigin="anonymous"></script>
+
+</body>
+</html>
