@@ -5,6 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import validate_email, authenticate, extract_neo_info, get_neo
+
 #configuring application
 app = Flask(__name__)
 
@@ -113,7 +114,7 @@ def astroids():
         start_date = request.form.get("start_date")
         end_date = request.form.get("end_date")
         current_date = datetime.now()
-        # Date format validation
+
         try:
             start_date = datetime.strptime(start_date, "%Y-%m-%d")
             end_date = datetime.strptime(end_date, "%Y-%m-%d")
@@ -123,7 +124,7 @@ def astroids():
             return render_template("astroids.html", error=error)
         
         difference = (end_date - start_date).days
-        # Date range validation
+
         if start_date < datetime(2020, 1, 1) or end_date > current_date:
             error = "Date should be after 2020-01-01 and before the current date."
             return render_template("astroids.html", error=error)

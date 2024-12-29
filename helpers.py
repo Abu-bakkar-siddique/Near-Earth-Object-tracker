@@ -30,13 +30,10 @@ def get_neo(start_date, end_date):
     base_url = "https://api.nasa.gov/neo/rest/v1/feed"
     my_key = "bz49Hv4NdWEZ5DrV0NyWuCtL2ZZLMWNT7L3Nj8Ea"
 
-    # Construct the API URL with the specified parameters
     url = f"{base_url}?start_date={start_date}&end_date={end_date}&api_key={my_key}"
     data = requests.get(url).json()
-    # Assuming 'data' contains the entire JSON response
     neos_info = []
 
-    # Extract information for the first 20 NEOs
     count = 0
     for date, neos in data['near_earth_objects'].items():
         for neo in neos:
@@ -55,10 +52,7 @@ def get_neo(start_date, end_date):
             print(val)
     return result['near_earth_objects']
 
-
 #get_neo("2021-04-24","2021-04-25")
-
-
 def authenticate(func):
 
     @wraps(func)
